@@ -6,15 +6,26 @@ export default class Application extends EventEmitter {
       READY: "ready",
     };
   }
-
+  
   constructor() {
     super();
-
-    const button = document.querySelector(".button");
-    button.addEventListener("click", () => {
-      alert("💣");
-    });
-
+    this._loading = document.querySelector("progbar"); 
     this.emit(Application.events.READY);
+    this._load("https://swapi.boom.dev/api/planets");
+    this._create();
+    this._startLoading();
+    this._stopLoading();
   }
+  async _load(url) {
+
+    this._startLoading();
+    const rawData = await fetch(url);
+    const Data = JSON.parse(rawData);
+
+
+  } 
 }
+
+
+
+
