@@ -10,9 +10,10 @@ export default class Application extends EventEmitter {
 
   constructor() {
     super();
-    let z = document.createElement("progress");
-    z.setAttribute('id','progress');
-    document.body.appendChild(z);
+    this.z = document.createElement("progress");
+    this.z.setAttribute('id','progress');
+    this.z.setAttribute('class', 'progress');
+    document.body.appendChild(this.z);
     this._loading = document.getElementById("progress");
     this.emit(Application.events.READY);
     this._startLoading(this._loading);
