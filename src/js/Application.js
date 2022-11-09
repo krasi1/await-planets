@@ -15,6 +15,7 @@ export default class Application extends EventEmitter {
     this.emit(Application.events.READY);
     this._startLoading(this._loading);
     this._load("https://swapi.boom.dev/api/planets");
+    this._render();
   }
   async _load(url) {
     const rawData = await fetch(url);
@@ -43,6 +44,9 @@ export default class Application extends EventEmitter {
 
   _stopLoading() {
     this._loading.style.visibility = "hidden";
+  }
+  
+  _render(){
   }
 }
 
