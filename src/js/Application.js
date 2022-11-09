@@ -7,7 +7,7 @@ export default class Application extends EventEmitter {
       READY: "ready",
     };
   }
-
+  
   constructor() {
     super();
     this._loading = document.getElementById("progbar");
@@ -45,4 +45,16 @@ export default class Application extends EventEmitter {
   _stopLoading(){
     this._loading.style.visibility = "hidden";
   }
+  async _load(url) {
+
+    this._startLoading();
+    const rawData = await fetch(url);
+    const Data = JSON.parse(rawData);
+
+
+  } 
 }
+
+
+
+
