@@ -10,8 +10,10 @@ export default class Application extends EventEmitter {
 
   constructor() {
     super();
-    this._loading = document.createElement("progress");
-    document.body.appendChild(this._loading);
+    let z = document.createElement("progress");
+    z.setAttribute('id','progress');
+    document.body.appendChild(z);
+    this._loading = document.getElementById("progress");
     this.emit(Application.events.READY);
     this._startLoading(this._loading);
     this._load("https://swapi.boom.dev/api/planets");
@@ -38,15 +40,15 @@ export default class Application extends EventEmitter {
     }
   }
 
+  _render(){
+  }
+
   _startLoading() {
     //this._loading.style.visibility = "hidden";
   }
 
   _stopLoading() {
     this._loading.style.visibility = "hidden";
-  }
-  
-  _render(){
   }
 }
 
